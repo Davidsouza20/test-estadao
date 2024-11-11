@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: estadao_api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/app
+    depends_on:
+      - estadao_postgres
+    environment:
+      - DB_HOST=estadao_database # Use the service name "database" here
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - DB_NAME=estadao
+    networks:
+      - estadao_network
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    entrypoint: ['./entrypoint.sh']
+
+  web: 
+    extends:
+      file: ./web/docker-compose.yml
+      service: web
+
+
+  estadao_postgres:
+    container_name: estadao_database
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=estadao
+    ports:
+      - 5432:5432
+    volumes:
+      - estadao:/var/lib/postgresql/data
+    networks:
+      - estadao_network
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U myuser']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  estadao:
+
+networks:
+  estadao_network:
+    driver: bridge

@@ -1,0 +1,30 @@
+### Create a new news article
+POST http://localhost:3000/news
+Content-Type: application/json
+
+{
+  "chapeu": "Politica",
+  "url": "http://local",
+  "titulo": "Teste 1 news",
+  "data_hora_publicacao": "2024-10-23",
+  "imagem": "string",
+  "thumbnail": "string",
+  "conteudo": "string"
+}
+
+### Get all news articles
+GET http://localhost:3000/news
+
+### Get a specific news article by ID
+GET http://localhost:3000/news/1
+
+### Update a news article by ID
+PATCH  http://localhost:3000/news/7
+Content-Type: application/json
+
+{
+  "chapeu": "Esportes"
+}
+
+### Delete a news article by ID
+DELETE http://localhost:3000/news/11

@@ -1,0 +1,9 @@
+### Authentication Request
+POST https://api3.estadao.com.br/c3RvcmUK/api/v1/auth
+Content-Type: application/json
+
+{
+  "username": "john.doe@teste.com",
+  "password": "siTe$_Deve!0pers@10"
+}
+
