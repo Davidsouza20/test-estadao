@@ -14,7 +14,19 @@ Para rodar o projeto em seu ambiente local faça um clone do repositório
 git clone <nome do repositorio>
 ```
 
-Após realizar o clone do repositório rode o comando do docker para subir o ambiente completo da aplicação utilizando o comando abaixo
+Após realizar o clone do repositório navegue até a pasta `web`
+
+```
+cd web
+```
+
+Crie um arquivo `.env` com base no arquivo `env.example`
+
+```
+cp env.example .env
+```
+
+Após isso rode o comando do docker para subir o ambiente completo da aplicação utilizando o comando abaixo
 
 ```
 docker compose up -d --build
