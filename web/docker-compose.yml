@@ -4,8 +4,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:5004
     ports:
-      - 3001:3001
+      - 5005:3001
     networks:
       - estadao_network
     extra_hosts:
