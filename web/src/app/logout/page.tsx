@@ -1,20 +1,16 @@
 "use client";
 
 import { useCallback, useEffect } from "react";
-import { useRouter } from "next/navigation";
 
 export default function LogoutPage() {
-  const router = useRouter();
-
   const handleLogout = useCallback(() => {
     document.cookie = `token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    router.push("/login");
-  }, [router]);
+    window.location.href = "/login";
+  }, []);
 
   useEffect(() => {
- 
     handleLogout();
-  }, [handleLogout, router]);
+  }, [handleLogout]);
 
   return (
     <div className="flex h-screen items-center justify-center bg-gray-50">
