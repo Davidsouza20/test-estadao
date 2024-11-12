@@ -26,6 +26,12 @@ Crie um arquivo `.env` com base no arquivo `env.example`
 cp env.example .env
 ```
 
+Volte para a pasta raiz do projeto 
+
+```
+cd ..
+```
+
 Após isso rode o comando do docker para subir o ambiente completo da aplicação utilizando o comando abaixo
 
 ```
